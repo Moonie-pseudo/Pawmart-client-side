@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "name": "Golden Retriever Puppy",
+    "category": "Pets",
+    "price": 0,
+    "location": "Dhaka",
+    "description": "Friendly 2-month-old puppy available for adoption.",
+    "image": "/src/assets/banner1.jpg",
+    "email": "owner1@gmail.com",
+    "date": "2025-10-27"
+  },
+  {
+    "id": 2,
+    "name": "Persian Cat",
+    "category": "Pets",
+    "price": 0,
+    "location": "Chattogram",
+    "description": "Lovely 1-year-old Persian cat looking for a home.",
+    "image": "/src/assets/banner1.jpg",
+    "email": "owner2@gmail.com",
+    "date": "2025-10-28"
+  },
+  {
+    "id": 3,
+    "name": "Dog Food Premium",
+    "category": "Pet Food",
+    "price": 500,
+    "location": "Dhaka",
+    "description": "High-quality dog food for all breeds.",
+    "image": "/src/assets/category-food.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-10-25"
+  },
+  {
+    "id": 4,
+    "name": "Vaccination Kit",
+    "category": "Pet Care Products",
+    "price": 1200,
+    "location": "Dhaka",
+    "description": "Complete vaccination kit for dogs and cats.",
+    "image": "/src/assets/vaccine_kit.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-10-26"
+  },
+  {
+    "id": 5,
+    "name": "Cat Toy Set",
+    "category": "Accessories",
+    "price": 300,
+    "location": "Sylhet",
+    "description": "Fun toy set for cats to play and exercise.",
+    "image": "/src/assets/category-accessory.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-10-29"
+  },
+  {
+    "id": 6,
+    "name": "Labrador Puppy",
+    "category": "Pets",
+    "price": 0,
+    "location": "Khulna",
+    "description": "Energetic 3-month-old Labrador puppy.",
+    "image": "/src/assets/banner1.jpg",
+    "email": "owner3@gmail.com",
+    "date": "2025-10-30"
+  },
+  {
+    "id": 7,
+    "name": "Dog Leash",
+    "category": "Accessories",
+    "price": 250,
+    "location": "Dhaka",
+    "description": "Durable leash for daily walks.",
+    "image": "/src/assets/category-accessory.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-10-28"
+  },
+  {
+    "id": 8,
+    "name": "Pet Shampoo",
+    "category": "Pet Care Products",
+    "price": 400,
+    "location": "Dhaka",
+    "description": "Gentle shampoo for all types of pets.",
+    "image": "/assets/products/pet_shampoo.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-10-29"
+  },
+  {
+    "id": 9,
+    "name": "Fish Food Pack",
+    "category": "Pet Food",
+    "price": 150,
+    "location": "Chattogram",
+    "description": "Nutritious fish food for freshwater fishes.",
+    "image": "/src/assets/category-food.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-10-27"
+  },
+  {
+    "id": 10,
+    "name": "Luna",
+    "category": "Pets",
+    "price": 0,
+    "location": "Rajshahi",
+    "description": "Cute 2-month-old kitten ready for adoption.",
+    "image": "/src/assets/banner1.jpg",
+    "email": "owner4@gmail.com",
+    "date": "2025-10-31"
+  },
+  {
+    "id": 11,
+    "name": "Rabbit Kit",
+    "category": "Pets",
+    "price": 0,
+    "location": "Dhaka",
+    "description": "Small, healthy rabbit looking for a loving home.",
+    "image": "/src/assets/banner1.jpg",
+    "email": "owner5@gmail.com",
+    "date": "2025-11-01"
+  },
+  {
+    "id": 12,
+    "name": "Bird Cage",
+    "category": "Accessories",
+    "price": 800,
+    "location": "Sylhet",
+    "description": "Spacious cage suitable for small to medium birds.",
+    "image": "/src/assets/category-accessory.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-11-02"
+  },
+  {
+    "id": 13,
+    "name": "Parrot Food Pack",
+    "category": "Pet Food",
+    "price": 350,
+    "location": "Khulna",
+    "description": "Healthy food mix for parrots and other birds.",
+    "image": "/src/assets/category-food.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-11-03"
+  },
+  {
+    "id": 14,
+    "name": "Pet Carrier Bag",
+    "category": "Accessories",
+    "price": 1200,
+    "location": "Dhaka",
+    "description": "Comfortable carrier bag for cats and small dogs.",
+    "image": "/src/assets/category-accessory.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-11-04"
+  },
+  {
+    "id": 15,
+    "name": "Hamster Wheel",
+    "category": "Accessories",
+    "price": 200,
+    "location": "Chattogram",
+    "description": "Fun exercise wheel for small hamsters.",
+    "image": "/src/assets/category-accessory.jpg",
+    "email": "shop@gmail.com",
+    "date": "2025-11-05"
+  }
+]
