@@ -4,22 +4,22 @@ const categories = [
   {
     id: 1,
     name: "Pets",
-    image: "/assets/category-pets.jpg",
+    image: "/src/assets/category-pet.jpg",
   },
   {
     id: 2,
     name: "Pet Food",
-    image: "/assets/category-food.jpg",
+    image: "/src/assets/category-food.jpg",
   },
   {
     id: 3,
     name: "Accessories",
-    image: "/assets/category-accessories.jpg",
+    image: "/src/assets/category-accessory.jpg",
   },
   {
     id: 4,
     name: "Pet Care Products",
-    image: "/assets/category-care.jpg",
+    image: "/src/assets/banner3.jpg",
   },
 ];
 
