@@ -1,4 +1,4 @@
-// src/pages/error/ErrorPage.jsx
+
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
