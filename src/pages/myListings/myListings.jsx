@@ -19,7 +19,6 @@ export default function MyListings() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
-  // Fetch user's listings from localStorage
   useEffect(() => {
     const allListings = JSON.parse(localStorage.getItem("listings")) || [];
     const userListings = allListings.filter(
@@ -28,7 +27,6 @@ export default function MyListings() {
     setListings(userListings);
   }, [user]);
 
-  // Open update modal and fill form with selected listing data
   const handleEdit = (listing) => {
     setSelectedListing(listing);
     setName(listing.name);
@@ -40,31 +38,25 @@ export default function MyListings() {
     setShowUpdateModal(true);
   };
 
-  // Save updates
   const handleUpdate = (e) => {
     e.preventDefault();
-
     const allListings = JSON.parse(localStorage.getItem("listings")) || [];
     const updatedListings = allListings.map((l) =>
       l.id === selectedListing.id
         ? { ...l, name, category, price, location, description, image }
         : l
     );
-
     localStorage.setItem("listings", JSON.stringify(updatedListings));
     setListings(updatedListings.filter((l) => l.email === user?.email));
-
     toast.success("Listing updated successfully!");
     setShowUpdateModal(false);
   };
 
-  // Delete a listing
   const handleDelete = () => {
     const allListings = JSON.parse(localStorage.getItem("listings")) || [];
     const updatedListings = allListings.filter(
       (l) => l.id !== selectedListing.id
     );
-
     localStorage.setItem("listings", JSON.stringify(updatedListings));
     setListings(updatedListings.filter((l) => l.email === user?.email));
     toast.success("Listing deleted successfully!");
@@ -73,61 +65,50 @@ export default function MyListings() {
 
   return (
     <div className="min-h-[80vh] py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto p-4 bg-white shadow-lg rounded-lg">
+      <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-3xl font-bold mb-6 text-black">My Listings</h2>
 
         {listings.length === 0 ? (
           <p className="text-gray-600">You have no listings.</p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="border px-4 py-2 text-left">Image</th>
-                  <th className="border px-4 py-2 text-left">Name</th>
-                  <th className="border px-4 py-2 text-left">Category</th>
-                  <th className="border px-4 py-2 text-left">Price</th>
-                  <th className="border px-4 py-2 text-left">Location</th>
-                  <th className="border px-4 py-2 text-left">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {listings.map((listing) => (
-                  <tr key={listing.id} className="hover:bg-gray-50">
-                    <td className="border px-4 py-2">
-                      <img
-                        src={listing.image}
-                        alt={listing.name}
-                        className="w-16 h-16 object-cover rounded"
-                      />
-                    </td>
-                    <td className="border px-4 py-2">{listing.name}</td>
-                    <td className="border px-4 py-2">{listing.category}</td>
-                    <td className="border px-4 py-2">
-                      {listing.price ? `$${listing.price}` : "Free"}
-                    </td>
-                    <td className="border px-4 py-2">{listing.location}</td>
-                    <td className="border px-4 py-2 space-x-2">
-                      <button
-                        onClick={() => handleEdit(listing)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded"
-                      >
-                        Update
-                      </button>
-                      <button
-                        onClick={() => {
-                          setSelectedListing(listing);
-                          setShowDeleteModal(true);
-                        }}
-                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {listings.map((listing) => (
+              <div
+                key={listing.id}
+                className="bg-white shadow-md rounded-lg overflow-hidden"
+              >
+                <img
+                  src={listing.image}
+                  alt={listing.name}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-2">{listing.name}</h3>
+                  <p className="text-gray-600 mb-1">Category: {listing.category}</p>
+                  <p className="text-gray-600 mb-1">
+                    Price: {listing.price ? `$${listing.price}` : "Free"}
+                  </p>
+                  <p className="text-gray-600 mb-1">Location: {listing.location}</p>
+                  <div className="mt-3 flex gap-2 flex-wrap">
+                    <button
+                      onClick={() => handleEdit(listing)}
+                      className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded"
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedListing(listing);
+                        setShowDeleteModal(true);
+                      }}
+                      className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -206,13 +187,11 @@ export default function MyListings() {
             >
               &times;
             </button>
-            <h3 className="text-xl font-bold mb-4 text-black">
-              Confirm Delete
-            </h3>
+            <h3 className="text-xl font-bold mb-4 text-black">Confirm Delete</h3>
             <p className="mb-4">
               Are you sure you want to delete <strong>{selectedListing?.name}</strong>?
             </p>
-            <div className="flex justify-end space-x-2">
+            <div className="flex justify-end gap-2">
               <button
                 onClick={handleDelete}
                 className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
