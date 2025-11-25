@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/home/Home";
@@ -12,6 +13,7 @@ import AddListing from "../pages/listings/AddListing.jsx";
 import MyListings from "../pages/myListings/MyListings";
 import MyOrders from "../pages/myOrders/MyOrders";
 import PrivateRoute from "./PrivateRoute";
+import ListingDetails from "../pages/listingDetails/ListingDetails.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
       { path: "/pets-supplies", element: <PetsSupplies /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      {
+        path: "/listing-details/:id",
+        element: (
+          <PrivateRoute>
+            <ListingDetails />
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/add-listing",
         element: (

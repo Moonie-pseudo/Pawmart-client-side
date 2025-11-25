@@ -1,10 +1,11 @@
+// src/pages/auth/Login.jsx
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 import { toast } from "react-hot-toast";
 import { useNavigate, Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc"; // <-- React Icon
+import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   const { setUser } = useContext(AuthContext);
@@ -12,27 +13,34 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  // Email & Password Login
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!email || !password) return toast.error("Please fill all fields");
+
+    if (!email || !password) {
+      return toast.error("Please fill all fields");
+    }
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
+      localStorage.setItem("user", JSON.stringify(userCredential.user));
       toast.success("Logged in successfully!");
-      navigate("/");
+      navigate("/"); // Redirect to homepage
     } catch (err) {
       toast.error(err.message);
     }
   };
 
+  // Google Login
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
       setUser(result.user);
+      localStorage.setItem("user", JSON.stringify(result.user));
       toast.success("Logged in with Google!");
-      navigate("/");
+      navigate("/"); // Redirect to homepage
     } catch (err) {
       toast.error(err.message);
     }
@@ -40,7 +48,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 pt-20">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg ">
+      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-3xl font-bold text-center text-black mb-6">
           Login to PawMart
         </h2>

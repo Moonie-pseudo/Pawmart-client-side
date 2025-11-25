@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, up
 import { auth } from "../../firebase/firebase.config";
 import { toast } from "react-hot-toast";
 import { useNavigate, Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc"; // Google Icon
+import { FcGoogle } from "react-icons/fc";
 
 export default function Register() {
   const { setUser } = useContext(AuthContext);
@@ -17,23 +17,48 @@ export default function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!name || !email || !password) return toast.error("Please fill all required fields");
 
-    if (!/[A-Z]/.test(password)) return toast.error("Password must have at least 1 uppercase letter");
-    if (!/[a-z]/.test(password)) return toast.error("Password must have at least 1 lowercase letter");
-    if (password.length < 6) return toast.error("Password must be at least 6 characters long");
+    // Basic validation
+    if (!name || !email || !password) {
+      return toast.error("Please fill all required fields");
+    }
+    if (!/[A-Z]/.test(password)) {
+      return toast.error("Password must have at least 1 uppercase letter");
+    }
+    if (!/[a-z]/.test(password)) {
+      return toast.error("Password must have at least 1 lowercase letter");
+    }
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters long");
+    }
 
     try {
+      // Create user with email/password
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Update profile with name and photoURL
       await updateProfile(userCredential.user, {
         displayName: name,
         photoURL: photoURL || null,
       });
+
+      // Set user in context
       setUser(userCredential.user);
+
+      // Success toast & redirect
       toast.success("Registered successfully!");
       navigate("/");
     } catch (err) {
-      toast.error(err.message);
+      // Common Firebase errors
+      if (err.code === "auth/email-already-in-use") {
+        toast.error("Email already in use. Please login instead.");
+      } else if (err.code === "auth/invalid-email") {
+        toast.error("Invalid email address.");
+      } else if (err.code === "auth/weak-password") {
+        toast.error("Password is too weak. Minimum 6 characters required.");
+      } else {
+        toast.error(err.message);
+      }
     }
   };
 
@@ -51,7 +76,7 @@ export default function Register() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 pt-20">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg ">
+      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-3xl font-bold text-center text-black mb-6">
           Register at PawMart
         </h2>
