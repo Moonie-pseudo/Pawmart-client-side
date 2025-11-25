@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function ErrorPage() {
-  // Set dynamic page title
+ 
   useEffect(() => {
     document.title = "404 - Page Not Found | PawMart";
   }, []);
